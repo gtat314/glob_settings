@@ -115,6 +115,19 @@ class glob_settings extends glob_dbaseTablePrimary {
     }
 
     /**
+     * @return glob_settings
+     */
+    public static function db_getLastModified() {
+
+        global $pdo;
+
+        $latest = self::db_getAll( 1, 'timeEdited', 'DESC' );
+
+        return $latest[ 0 ];
+
+    }
+
+    /**
      * @param array $exclude
      * @return array
      */
